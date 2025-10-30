@@ -1,0 +1,17 @@
+#!/bin/bash
+
+contest=$1
+problem=$2
+
+if [ -z "$contest" ] || [ -z "$problem" ]; then
+    echo "Usage: ./new_contest <contest_name> <problem_name>"
+    exit 1
+fi
+
+mkdir -p "$contest"
+
+cp a.cc "$contest/$problem.cc"
+
+cd "$contest"
+
+vim "$problem.cc"
