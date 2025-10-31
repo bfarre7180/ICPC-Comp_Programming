@@ -10,7 +10,7 @@ fi
 
 mkdir -p "$contest"
 
-cp a.cc "$contest/$problem.cc"
+cp Template.cc "$contest/$problem.cc"
 
 cd "$contest"
 

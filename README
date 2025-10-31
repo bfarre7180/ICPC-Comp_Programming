@@ -1,4 +1,4 @@
-a.cc is a template file for the competitions, and the script works as follows
+Template.cc is a template file for the competitions, and the script works as follows
 run ./new_contest <Contest Name> <File Name>
 this will create or open the <Contest Name> directory and create or open the <File Name> file with vim
 

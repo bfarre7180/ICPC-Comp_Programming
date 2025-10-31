@@ -24,19 +24,19 @@ using vll = vector<ll>;
 
 int Solution(int arr[], int n, int query) {
     if(query >= arr[n-1]) {
-        return n;
+        return n+1;
     }
     int l = 0;
     int r = n-1;
     while(l < r) {
         int m = (l+r)/2;
-        if(query >= arr[m]) {
+        if(query > arr[m]) {
             l = m+1;
         } else {
             r = m;
         }
     }
-    return r;
+    return l+1;
 }
 
 int main() {

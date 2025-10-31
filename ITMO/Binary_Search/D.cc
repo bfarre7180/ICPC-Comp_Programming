@@ -22,7 +22,7 @@ using pll = pair<ll,ll>;
 using vi = vector<int>;
 using vll = vector<ll>;
 
-int Solution(int arr[], int n, int query) {
+int bsUp(int arr[], int n, int query) {
     if(query >= arr[n-1]) {
         return n;
     }
@@ -30,7 +30,24 @@ int Solution(int arr[], int n, int query) {
     int r = n-1;
     while(l < r) {
         int m = (l+r)/2;
-        if(query >= arr[m]) {
+        if(query < arr[m]) {
+            r = m;
+        } else {
+            l = m+1;
+        }
+    }
+    return r;
+}
+
+int bsLow(int arr[], int n, int query) {
+    if(query > arr[n-1]) {
+        return n;
+    }
+    int l = 0;
+    int r = n-1;
+    while(l < r) {
+        int m = (l+r)/2;
+        if(query > arr[m]) {
             l = m+1;
         } else {
             r = m;
@@ -39,17 +56,23 @@ int Solution(int arr[], int n, int query) {
     return r;
 }
 
+int Solution(int arr[], int n, int low, int up) {
+    return bsUp(arr,n,up) - bsLow(arr,n,low);
+}
+
 int main() {
     int n,k;
-    cin >> n >> k;
+    cin >> n;
     int arr[n];
-    int query;
     rep(i,0,n) {
         cin >> arr[i];
     }
+    sort(arr, arr+n);
+    cin >> k;
     rep(i,0,k) {
-        cin >> query;
-        cout << Solution(arr,n,query) << "\n";
+        int low, up;
+        cin >> low >> up;
+        cout << Solution(arr,n,low,up) << " ";
     }
     return 0;
 }
